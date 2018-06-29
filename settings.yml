@@ -1,0 +1,15 @@
+all:
+  lambda:
+    name: subs_lambda
+    handler: main.handler
+    runtime: python2.7
+    memory: 128
+    timeout: 15
+    description: This lambda receives events to be send to subscribers. The events that fail to be delivered are inserted into a dynamodb table for retry
+    env_configuration: true # deploys configuration values to the lambda's env (config files must present inside the lambda)
+    event:
+      event_name: subs_lambda_rule
+      event_description: retry failed events every hour
+      event_source: rule
+      ScheduleExpression: rate(60 minutes)
+      state: ENABLED

@@ -1,0 +1,11 @@
+{
+  "name": "subs_lambda",
+  "stages": {
+    "all": {
+      "event_table": "events",
+      "subs_table": "subscribers",
+      "region": "us-east-1",
+      "endpoint_url": "http://localhost:8000"
+    }
+  }
+}
